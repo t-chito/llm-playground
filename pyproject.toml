@@ -24,4 +24,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
 # poetry run task start
-start = "python -m streamlit run llm_playground/app.py"
+start = "streamlit run llm_playground/app.py"
+# poetry run task chat
+chat = "streamlit run llm_playground/chat_app.py"

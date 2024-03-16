@@ -1,5 +1,6 @@
 import streamlit as st
-from langchain.llms import OpenAI
+from langchain_core.messages import HumanMessage
+from langchain_openai import ChatOpenAI
 
 st.title("Quick LLM Playground")
 
@@ -7,8 +8,12 @@ openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
 
 def generate_response(input_text):
-    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
-    st.info(llm(input_text))
+    llm = ChatOpenAI(temperature=0.7, model="gpt-4", openai_api_key=openai_api_key)
+    messages = [
+        HumanMessage(content=input_text),
+    ]
+
+    st.info(llm.invoke(messages).content)
 
 
 with st.form("my_form"):

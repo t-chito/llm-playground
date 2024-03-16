@@ -1,0 +1,4 @@
+# 外部から取得したデータは ignore する
+/*
+!README.md
+!.gitignore

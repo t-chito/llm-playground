@@ -3,7 +3,9 @@ from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 
 # inner import
-from prompts.persona import prompt
+# from prompts.persona import prompt
+from prompts.extract_ka_cards import prompt
+from prompts.tiktoken import get_token_count
 from settings import OPENAI_API_KEY
 
 st.title("Quick LLM Playground")
@@ -16,8 +18,10 @@ def generate_response(input_text):
     messages = [
         HumanMessage(content=input_text),
     ]
+    st.info("input tokens: " + str(get_token_count(input_text)))
     result = llm.invoke(messages).content
     st.info(result)
+    st.info("output tokens: " + str(get_token_count(result)))
     save_result(result)
 
 
@@ -31,7 +35,7 @@ with st.form("my_form"):
     #     "テキストを入力してください:",
     #     "ああああ と返してください。",
     # )
-    st.text("persona 生成")
+    st.text("KA カード生成")
     submitted = st.form_submit_button("Submit")
 
     if submitted:

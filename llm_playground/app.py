@@ -2,13 +2,14 @@ import streamlit as st
 from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 
-st.title("Quick LLM Playground")
+# ./settings.py
+from settings import OPENAI_API_KEY
 
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+st.title("Quick LLM Playground")
 
 
 def generate_response(input_text):
-    llm = ChatOpenAI(temperature=0.7, model="gpt-4", openai_api_key=openai_api_key)
+    llm = ChatOpenAI(temperature=0.7, model="gpt-4", openai_api_key=OPENAI_API_KEY)
     messages = [
         HumanMessage(content=input_text),
     ]
@@ -18,11 +19,13 @@ def generate_response(input_text):
 
 with st.form("my_form"):
     text = st.text_area(
-        "Enter text:",
-        "What are the three key pieces of advice for learning how to code?",
+        "テキストを入力してください:",
+        "ああああ と返してください。",
     )
     submitted = st.form_submit_button("Submit")
-    if not openai_api_key.startswith("sk-"):
-        st.warning("Please enter your OpenAI API key!", icon="⚠")
-    if submitted and openai_api_key.startswith("sk-"):
-        generate_response(text)
+
+    if submitted:
+        if text:
+            st.warning("なにかテキストを入力してください", icon="⚠")
+        else:
+            generate_response(text)

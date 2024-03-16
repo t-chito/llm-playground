@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "llm-playground"
+version = "0.1.0"
+description = ""
+authors = ["t-chito <published.address.of.k.t@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.32.2"
+openai = "^1.14.1"
+langchain = "^0.1.12"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.12.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.taskipy.tasks]
+# poetry run task start
+start = "streamlit run llm_playground/app.py"

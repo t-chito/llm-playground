@@ -4,14 +4,12 @@ see https://docs.streamlit.io/knowledge-base/tutorials/build-conversational-apps
 """
 
 import streamlit as st
-from openai import OpenAI
 
-# ./settings.py
-from settings import OPENAI_API_KEY
+# inner import
+from models import client
 
 st.title("ChatGPT-like clone")
 
-client = OpenAI(api_key=OPENAI_API_KEY)
 
 # TODO: langchain x gpt4 に変更する
 # デフォルトのモデルを設定

@@ -27,7 +27,7 @@ def get_response_once(prompt: str, llm=llm):
     return result
 
 
-def save_result(result):
+def save_result(result, filename="result.txt"):
     """結果を保存する"""
-    with open("result.txt", "w", encoding="utf-8") as f:
+    with open(filename, "w", encoding="utf-8") as f:
         f.write(result)

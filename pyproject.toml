@@ -13,10 +13,12 @@ langchain = "^0.1.12"
 langchain-openai = "^0.0.8"
 python-dotenv = "^1.0.1"
 tiktoken = "^0.6.0"
+pandas = "^2.2.1"
 
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.2"
+pandas-stubs = "^2.2.1.240316"
 
 [build-system]
 requires = ["poetry-core"]
@@ -28,3 +30,5 @@ build-backend = "poetry.core.masonry.api"
 start = "streamlit run llm_playground/app.py"
 # poetry run task chat
 chat = "streamlit run llm_playground/chat_app.py"
+# poetry run task resil
+resil = "streamlit run llm_playground/resilience/Home.py"
